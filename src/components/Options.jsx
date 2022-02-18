@@ -9,7 +9,7 @@ const Options = ({ children }) => {
     const [idToCall, setIdToCall] = useState('');
     return (
         <>
-            <Container style={{ width: '600px' }}>
+            <Container>
                 <Paper className="my-3 justify-content-center" elevation={10} >
                     <form noValidate autoComplete='off'>
                         <Grid container >

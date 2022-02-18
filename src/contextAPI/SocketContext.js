@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Peer from 'simple-peer';
 const SocketContext = createContext();
 
-const socket = io('http://localhost:8080');
+const socket = io('https://video-calling-server.herokuapp.com');
 
 const ContextProvider = ({ children }) => {
     const [stream, setStream] = useState(null);
@@ -58,9 +58,15 @@ const ContextProvider = ({ children }) => {
         connectionRef.current.destroy();
         window.location.reload();
     };
+    const rejectCall = () => {
+        socket.on('callaccepted', (signal) => {
+            setCallAccepted(true);
+        })
+        window.location.reload();
+    }
     return (<SocketContext.Provider value={{
         call, callAccepted, myVideo, userVideo, stream,
-        name, setName, callEnded, me, callUser, leaveCall, answerCall
+        name, setName, callEnded, me, callUser, leaveCall, answerCall, rejectCall
     }}>
         {children}
     </SocketContext.Provider>)

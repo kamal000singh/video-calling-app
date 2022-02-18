@@ -1,28 +1,29 @@
-import { Grid, Paper, Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import React, { useContext } from 'react'
 import { SocketContext } from '../contextAPI/SocketContext'
 
 
 const VideoPlayer = () => {
     const { name, callAccepted, callEnded, stream, call, myVideo, userVideo } = useContext(SocketContext);
-    return (
-        <>
-            <Grid className="justify-content-center mt-3" spacing={2} container>
-                {stream && <Paper>
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h5" gutterBottom >{name || 'Name'}</Typography>
-                        <video playsInline muted ref={myVideo} autoPlay style={{ width: '550px' }} />
-                    </Grid>
-                </Paper>}
-                {callAccepted && !callEnded && <Paper>
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h5" gutterBottom >{call.name || 'Name'}</Typography>
-                        <video playsInline muted ref={userVideo} autoPlay style={{ width: '550px' }} />
-                    </Grid>
-                </Paper>}
 
-            </Grid>
-        </>
+    return (
+        <div className="mt-4">
+            <div className={`row justify-content-center`}>
+                {stream && <div className={`col col-md-5 m-1 bg-light border rounded-3`}>
+                    <Grid item xs={12} md={12}>
+                        <Typography variant="h5" className="text-start px-1" gutterBottom >{name || 'Name'}</Typography>
+                        <video style={{ width: '100%', height: '100%' }} playsInline muted ref={myVideo} autoPlay />
+                    </Grid>
+                </div>}
+                {callAccepted && !callEnded && <div className={`col col-md-5  m-1 bg-light border rounded-3`}>
+                    <Grid item xs={12} md={12}>
+                        <Typography variant="h5" className="text-start px-1" gutterBottom >{call.name || 'Name'}</Typography>
+                        <video style={{ width: '100%', height: '100%' }} playsInline muted ref={userVideo} autoPlay />
+                    </Grid>
+                </div>}
+
+            </div>
+        </div>
     )
 }
 

@@ -11,9 +11,9 @@ const port = process.env.PORT || 8080;
 
 app.use(cors());
 
-app.get('/', function (req, res) {
-    res.send("Hello Kamal Singh Rawat")
-})
+app.get('/', (req, res) => {
+    res.send('Running server');
+});
 
 io.on('connection', (socket) => {
     socket.emit('me', socket.id);
