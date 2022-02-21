@@ -1,5 +1,4 @@
 import { Typography, AppBar } from '@material-ui/core'
-import Notifications from './components/Notifications';
 import Options from './components/Options';
 import VideoPlayer from './components/VideoPlayer';
 
@@ -10,9 +9,7 @@ function App() {
         <Typography variant='h2' align='center'>Video Calling App</Typography>
       </AppBar>
       <VideoPlayer />
-      <Options>
-        <Notifications />
-      </Options>
+      <Options />
     </div>
   );
 }

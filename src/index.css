@@ -2,3 +2,14 @@ body{
     background-image: url("./images/bg-image.jpg");
 
 }
+.callReceive{
+    width: 60%;
+    height: auto;
+    background-color: rgb(46, 81, 146);
+    position: fixed;
+    top: 25%;
+    left: 20%;
+    right: 20%;
+    padding: 25px;
+    z-index: 2;
+}
