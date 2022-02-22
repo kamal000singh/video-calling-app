@@ -11,13 +11,13 @@ const VideoPlayer = () => {
             <div className={`row justify-content-center `}>
                 {stream && <div className={`col-12 col-md-6 p-2`}>
                     <Grid className='border rounded-3 bg-light' item xs={12} md={12}>
-                        <Typography variant="h5" className="text-start px-2" gutterBottom >{name || 'Name'}</Typography>
-                        <video style={{ width: '100%', height: '100%', padding: '5px' }} playsInline muted={true} ref={myVideo} autoPlay />
+                        <Typography variant="h5" className="text-start px-2" gutterBottom >{name || 'Me'}</Typography>
+                        <video style={{ width: '100%', height: '100%', padding: '5px' }} playsInline muted ref={myVideo} autoPlay />
                     </Grid>
                 </div>}
                 {callAccepted && !callEnded && <div className={`col-12 col-md-6 p-2`}>
                     <Grid className='border rounded-3 bg-light' item xs={12} md={12}>
-                        <Typography variant="h5" className="text-start px-2" gutterBottom >{call.name || 'Name'}</Typography>
+                        <Typography variant="h5" className="text-start px-2" gutterBottom >{call.name || 'User'}</Typography>
                         <video style={{ width: '100%', height: '100%', padding: '5px' }} playsInline ref={userVideo} autoPlay />
                     </Grid>
                 </div>}
