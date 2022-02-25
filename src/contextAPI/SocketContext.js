@@ -22,12 +22,13 @@ const ContextProvider = ({ children }) => {
             setStream(currentStream);
             myVideo.current.srcObject = currentStream;
         });
-        socket.on('me', (id) => { setMe(id) });
+        socket.on('me', (id) => {
+            setMe(id);
+        });
         socket.on('calluser', ({ from, name: callName, signal }) => {
             setCall({ isReceivedCall: true, from, name: callName, signal })
         })
     }, []);
-
     const answerCall = () => {
         setCallAccepted(true);
         const peer = new Peer({ initiator: false, trickle: false, stream });
@@ -36,6 +37,9 @@ const ContextProvider = ({ children }) => {
         })
         peer.on('stream', (currentStream) => {
             myVideo.current.srcObject = currentStream;
+        });
+        peer.on('stream', (currentStream) => {
+            userVideo.current.srcObject = currentStream;
         });
         peer.signal(call.signal);
         connectionRef.current = peer;
