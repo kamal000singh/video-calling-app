@@ -35,7 +35,8 @@ const ContextProvider = ({ children }) => {
         peer.on('signal', (data) => {
             socket.emit('answerCall', { signal: data, to: call.from });
         })
-        peer.on('stream', (currentStream) => {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((currentStream) => {
+            setStream(currentStream);
             myVideo.current.srcObject = currentStream;
         });
         peer.on('stream', (currentStream) => {
